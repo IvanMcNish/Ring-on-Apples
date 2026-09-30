@@ -431,6 +431,30 @@ static BOOL SwizzledOpenURL(id self, SEL _cmd, UIApplication *app, NSURL *url, N
 
 #if TARGET_OS_IPHONE || TARGET_OS_TV
     [GCController setShouldMonitorBackgroundEvents:YES];
+
+    Class gkLocalPlayerClass = NSClassFromString(@"GKLocalPlayer");
+    if (gkLocalPlayerClass) {
+        SEL selLocal = NSSelectorFromString(@"localPlayer");
+        if ([gkLocalPlayerClass respondsToSelector:selLocal]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            id localPlayer = [gkLocalPlayerClass performSelector:selLocal];
+            if (localPlayer) {
+                [localPlayer setValue:^(UIViewController *vc, NSError *err) {
+                    if (vc) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            UIViewController *top = [self topViewController];
+                            if (top) [top presentViewController:vc animated:YES completion:nil];
+                        });
+                    } else {
+                        NSLog(@"[HaloGameKit] Local player state: %@", err ? err.localizedDescription : @"Connected");
+                    }
+                } forKey:@"authenticateHandler"];
+            }
+#pragma clang diagnostic pop
+        }
+    }
+
     Class gkClass = NSClassFromString(@"GKAccessPoint");
     if (gkClass) {
         SEL selShared = NSSelectorFromString(@"shared");

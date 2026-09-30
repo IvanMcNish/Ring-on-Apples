@@ -64,21 +64,37 @@ def find_signing_credentials(target):
     selected_prof = Path(env_prof) if env_prof and Path(env_prof).exists() else None
 
     if not selected_prof and prof_dir.exists():
-        # First pass: matching bundle identifier
+        plat_tag = b"iOS" if target == "ios" else b"tvOS"
+        bundle_tag = f"{target_bundle}</string>".encode()
+        bundle_colon = f": {target_bundle}".encode()
+
+        # First pass: matching both platform tag and exact bundle identifier
         for p in prof_dir.glob("*.mobileprovision"):
             try:
                 data = p.read_bytes()
-                if target_bundle.encode() in data:
+                if plat_tag in data and (bundle_tag in data or bundle_colon in data):
                     selected_prof = p
                     break
             except Exception:
                 continue
-        # Second pass: matching platform
+
+        # Second pass: matching bundle identifier
         if not selected_prof:
             for p in prof_dir.glob("*.mobileprovision"):
                 try:
                     data = p.read_bytes()
-                    if (b"iOS" if target == "ios" else b"tvOS") in data:
+                    if bundle_tag in data or bundle_colon in data:
+                        selected_prof = p
+                        break
+                except Exception:
+                    continue
+
+        # Third pass: matching platform
+        if not selected_prof:
+            for p in prof_dir.glob("*.mobileprovision"):
+                try:
+                    data = p.read_bytes()
+                    if plat_tag in data:
                         selected_prof = p
                         break
                 except Exception:
@@ -86,8 +102,21 @@ def find_signing_credentials(target):
 
     return selected_id, selected_prof
 
-def generate_entitlements_plist(target, out_path):
-    """Generate minimal valid entitlements for local development."""
+def generate_entitlements_plist(target, selected_prof, out_path):
+    """Extract valid entitlements directly from the provisioning profile or fallback to minimal."""
+    if selected_prof and Path(selected_prof).exists():
+        try:
+            import plistlib
+            cmd = ["security", "cms", "-D", "-i", str(selected_prof)]
+            full_xml = subprocess.check_output(cmd, stderr=subprocess.DEVNULL)
+            parsed = plistlib.loads(full_xml)
+            if "Entitlements" in parsed:
+                ent_data = plistlib.dumps(parsed["Entitlements"])
+                out_path.write_bytes(ent_data)
+                return
+        except Exception:
+            pass
+
     plist = """<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -202,7 +231,7 @@ def package_target(target):
         shutil.copy2(prof, app_dir / "embedded.mobileprovision")
         
         entitlements_tmp = OUTPUT_DIR / f"{target}_entitlements.plist"
-        generate_entitlements_plist(target, entitlements_tmp)
+        generate_entitlements_plist(target, prof, entitlements_tmp)
         
         subprocess.run([
             "codesign", "--force", "--sign", dev_id,
