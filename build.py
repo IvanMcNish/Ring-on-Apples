@@ -112,10 +112,19 @@ def build_macos():
     print("\nBuilding native macOS application bundle...")
     run_command([sys.executable, "build_macos_engine.py"])
 
+def launch_gui():
+    print("Launching Halo Apple Platforms Builder GUI...", flush=True)
+    gui_bin = ROOT / "build-macos/HaloBuilder"
+    gui_src = ROOT / "Platforms/macOS/HaloBuilderApp.m"
+    if not gui_bin.exists():
+        gui_bin.parent.mkdir(parents=True, exist_ok=True)
+        subprocess.run(["clang", "-O2", "-fobjc-arc", "-framework", "Cocoa", str(gui_src), "-o", str(gui_bin)], check=True)
+    subprocess.run([str(gui_bin)], cwd=ROOT)
+
 def main():
     parser = argparse.ArgumentParser(description="Master build and deployment tool for Halo Combat Evolved Apple Platforms.")
-    parser.add_argument("target", nargs="?", default=None, choices=["ios", "tvos", "macos", "all"],
-                        help="Target platform to build (ios, tvos, macos, all)")
+    parser.add_argument("target", nargs="?", default=None, choices=["ios", "tvos", "macos", "all", "gui"],
+                        help="Target platform to build (ios, tvos, macos, all, gui)")
     parser.add_argument("--clean", action="store_true", help="Remove all build and dist folders to minimize repository size")
     parser.add_argument("--skip-ipa", action="store_true", help="Skip creating .ipa zip archive to save disk space and time")
     parser.add_argument("--install-ios", action="store_true", help="Install iOS app directly to connected iPhone or iPad")
@@ -123,6 +132,10 @@ def main():
     parser.add_argument("--renew-7days", action="store_true", help="Re-package and deploy to all connected devices for free 7-day sideload renewal")
 
     args = parser.parse_args()
+
+    if args.target == "gui":
+        launch_gui()
+        return
 
     if args.clean:
         clean_artifacts()

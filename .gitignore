@@ -11,6 +11,11 @@ dist/
 # Game Assets (Copyrighted data - place your own maps in Assets/GameData)
 Assets/GameData/*
 !Assets/GameData/README.md
+*.map
+*.iso
+*.xbe
+*.bin
+*.cue
 
 # macOS & Xcode metadata
 .DS_Store

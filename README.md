@@ -6,6 +6,11 @@
 
 A fully native, high-performance port of **Halo: Combat Evolved** running natively on Apple Silicon hardware via static AOT recompilation, featuring Metal/OpenGL ES rendering, native Apple Game Mode, zero-latency touch controls, and cross-platform multiplayer.
 
+> [!IMPORTANT]
+> **LEGAL & CLEAN-ROOM DISCLAIMER**:
+> This repository contains **ONLY open-source recompiled engine code, translation layers, and platform launchers**. It **DOES NOT CONTAIN** any copyrighted game assets, audio files, textures, game maps (`.map`), or ISO disk images.
+> Users must legally own a copy of Halo: Combat Evolved (PC/Mac) and provide their own game assets.
+
 > [!NOTE]
 > Read the Spanish version of this guide here: [README_ES.md](README_ES.md).
 
@@ -14,7 +19,10 @@ A fully native, high-performance port of **Halo: Combat Evolved** running native
 ## 🌟 Key Features
 
 * **Universal Apple Silicon Optimization**: Runs natively on M1–M4 (Macs), A14–A18 (iPhones & iPads), and A15/M2 (Apple TV 4K) at rock-solid 60+ FPS with full Retina/4K scaling.
-* **Apple Game Mode Support**: Configured with `LSSupportsGameMode` and GameKit integration for iOS 18 / iPadOS 18 / macOS Sonoma, providing maximum CPU/GPU priority and reduced Bluetooth latency for AirPods and gamepads.
+* **Apple Game Mode & Low Latency (iOS, iPadOS, macOS, tvOS)**:
+  * **iOS / iPadOS**: Integrates `LSSupportsGameMode` to trigger Game Mode, prioritizing CPU/GPU for the game and doubling Bluetooth polling rates for gamepads.
+  * **Apple TV 4K**: Triggers HDMI 2.1 Auto Low Latency Mode (ALLM) on compatible TVs (LG, Samsung, Sony), alongside Game Center overlay and DualSense / Xbox controller integration.
+* **Halo Apple Platforms Builder (Native Mac GUI)**: Includes a standalone Mac app (`HaloBuilder.command`) to select assets, compile, export IPAs for AltStore/Sideloadly, and deploy in one click.
 * **Custom Sci-Fi Cyan Neon Touch HUD**:
   * **Smooth 1:1 Touch Aiming**: High-precision mouse-look tracking with zero deadzone or latency.
   * **Polished D-Pad / Move Stick**: Segmented radial quadrant dividers (45°), crisp chevrons, and analog thumb knob.
@@ -82,9 +90,17 @@ Place your Halo CE `maps/` directory into `Assets/GameData/`:
 ln -s ~/Applications/"Halo Combat Evolved.app"/Contents/Resources/GameData Assets/GameData
 ```
 
-### 2. Building for Your Target Platform
+### 2. Option A: Using the macOS GUI Builder (Recommended)
+You can configure, compile, and deploy without using the terminal:
+1. Double-click **`HaloBuilder.command`** in Finder (or run `python3 build.py gui`).
+2. Select your target platform (**iOS/iPadOS**, **Apple TV**, **macOS**, or **All**).
+3. Select your Halo `maps/` folder.
+4. Check **"Generar .IPA listos para AltStore / Sideloadly"** or **"Instalar automáticamente"**.
+5. Click **"🚀 Iniciar Compilación"**.
 
-Use the master `build.py` script:
+---
+
+### 3. Option B: Using the CLI Tool (`build.py`)
 
 #### For iPhone & iPad (iOS/iPadOS):
 ```bash

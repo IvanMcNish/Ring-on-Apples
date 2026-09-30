@@ -6,6 +6,11 @@
 
 Port nativo y de alto rendimiento de **Halo: Combat Evolved** diseñado específicamente para Apple Silicon mediante recompilación estática AOT, renderizado con Metal y OpenGL ES, compatibilidad con el Modo Juego de Apple, controles táctiles Neón Sci-Fi y multijugador multiplataforma.
 
+> [!IMPORTANT]
+> **AVISO LEGAL Y REGLA DE SALA LIMPIA (CLEAN-ROOM DISCLAIMER)**:
+> Este repositorio **SOLO contiene código fuente abierto del motor recompilado, capas de traducción nativas y lanzadores para Apple Silicon**. **NO CONTIENE** ningún archivo con copyright comercial, música, sonidos, texturas, mapas de juego (`.map`) ni imágenes de disco ISO.
+> El usuario debe poseer legalmente una copia original de Halo: Combat Evolved (PC o Mac) y proveer sus propios archivos de juego para generar las versiones ejecutables.
+
 > [!NOTE]
 > Para la versión en inglés de esta guía, consulta: [README.md](README.md).
 
@@ -14,7 +19,10 @@ Port nativo y de alto rendimiento de **Halo: Combat Evolved** diseñado específ
 ## 🌟 Características Principales
 
 * **Optimización Total para Apple Silicon**: Diseñado para exprimir al máximo los chips M1–M4 (Macs), A14–A18 (iPhones e iPads) y A15/M2 (Apple TV 4K), corriendo a más de 60 FPS estables con resolución completa.
-* **Compatibilidad con Modo Juego de Apple (Game Mode)**: Configurado con directivas oficiales `LSSupportsGameMode` y GameKit para iOS 18 / iPadOS 18 / macOS Sonoma, maximizando el rendimiento del chip y reduciendo la latencia Bluetooth para AirPods y mandos.
+* **Compatibilidad con Modo Juego de Apple (Game Mode) y Baja Latencia**:
+  * **iOS / iPadOS**: Integración nativa con `LSSupportsGameMode` para priorizar CPU/GPU y reducir la latencia de controles Bluetooth a la mitad.
+  * **Apple TV 4K**: Activa automáticamente el Modo de Baja Latencia (HDMI ALLM) en televisores compatibles (LG, Samsung, Sony), con soporte para superposición de Game Center y mandos DualSense / Xbox.
+* **Halo Apple Platforms Builder (App Gráfica para Mac)**: Aplicación gráfica nativa para macOS (`HaloBuilder.command`) que permite compilar, generar archivos `.ipa` para AltStore/Sideloadly e instalar en dispositivos con un solo clic.
 * **HUD Táctil Sci-Fi Neón Cian**:
   * **Apuntado 1:1 Ultra-Fluido**: Seguimiento de mira por movimiento relativo de ratón en tiempo real, sin decaimiento ni zonas muertas.
   * **Cruceta / Joystick de Movimiento Pulido**: 4 divisores diagonales a 45° matemáticamente limpios, chevrons (`▲`, `▼`, `◀`, `▶`) nítidos y perilla central analógica.
@@ -82,9 +90,17 @@ Coloca la carpeta `maps/` de tu copia de Halo CE dentro de `Assets/GameData/`:
 ln -s ~/Applications/"Halo Combat Evolved.app"/Contents/Resources/GameData Assets/GameData
 ```
 
-### 2. Compilar para la Plataforma Deseada
+### 2. Opción A: Usando la App Gráfica para Mac (Recomendado)
+Puedes compilar y generar tus apps sin tocar la terminal:
+1. Haz doble clic en el archivo ejecutable **`HaloBuilder.command`** en el Finder (o corre `python3 build.py gui`).
+2. Selecciona la plataforma destino (**iOS/iPadOS**, **Apple TV**, **macOS**, o **Todas**).
+3. Selecciona tu carpeta con los mapas de Halo (`maps/`).
+4. Marca **"Generar .IPA listos para AltStore / Sideloadly"** o **"Instalar automáticamente"**.
+5. Presiona **"🚀 Iniciar Compilación"**. La app compilará todo de forma nativa e instalará o abrirá la carpeta con los archivos `.ipa`.
 
-Utiliza el script unificado `build.py`:
+---
+
+### 3. Opción B: Usando la Línea de Comandos (`build.py`)
 
 #### Para iPhone e iPad (iOS/iPadOS):
 ```bash
