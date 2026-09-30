@@ -1,0 +1,558 @@
+{
+  "format": 1,
+  "input_elf": "/Users/ivanmcnish/Library/Caches/halo-ce-apple-silicon/20260929-193526-22123/build/source/build/macos-aot/halo_guest.elf",
+  "input_elf_sha256": "e0592415a5b057150a4073a2ecb9b75a662cc3340c6d6d78b7a74e681070f10a",
+  "expected_elf_sha256": "e0592415a5b057150a4073a2ecb9b75a662cc3340c6d6d78b7a74e681070f10a",
+  "entry": "0x00392040",
+  "text": {
+    "va": "0x00010000",
+    "size": 4379992
+  },
+  "function_symbols_total": 12010,
+  "functions_selected": 12010,
+  "functions_translated": 12010,
+  "functions_failed": [],
+  "functions_with_unsupported_instructions": [
+    {
+      "va": 695904,
+      "mnemonics": [
+        {
+          "mnemonic": "ud2",
+          "instruction_va": 696163
+        }
+      ]
+    },
+    {
+      "va": 4050752,
+      "mnemonics": [
+        {
+          "mnemonic": "hlt",
+          "instruction_va": 4050755
+        }
+      ]
+    },
+    {
+      "va": 4090592,
+      "mnemonics": [
+        {
+          "mnemonic": "hlt",
+          "instruction_va": 4090595
+        }
+      ]
+    },
+    {
+      "va": 4091200,
+      "mnemonics": [
+        {
+          "mnemonic": "hlt",
+          "instruction_va": 4091203
+        }
+      ]
+    },
+    {
+      "va": 4092976,
+      "mnemonics": [
+        {
+          "mnemonic": "hlt",
+          "instruction_va": 4092979
+        }
+      ]
+    },
+    {
+      "va": 4100368,
+      "mnemonics": [
+        {
+          "mnemonic": "hlt",
+          "instruction_va": 4100371
+        }
+      ]
+    },
+    {
+      "va": 4101728,
+      "mnemonics": [
+        {
+          "mnemonic": "hlt",
+          "instruction_va": 4101731
+        }
+      ]
+    },
+    {
+      "va": 4103584,
+      "mnemonics": [
+        {
+          "mnemonic": "hlt",
+          "instruction_va": 4103587
+        }
+      ]
+    },
+    {
+      "va": 4411136,
+      "mnemonics": [
+        {
+          "mnemonic": "hlt",
+          "instruction_va": 4411139
+        }
+      ]
+    }
+  ],
+  "unresolved_direct_targets": [],
+  "imports": [
+    {
+      "va": "0x70000000",
+      "name": "guest_gl_get_proc_address"
+    },
+    {
+      "va": "0x70000010",
+      "name": "halo_gl41_copy_image_2d"
+    },
+    {
+      "va": "0x70000020",
+      "name": "host_abort"
+    },
+    {
+      "va": "0x70000030",
+      "name": "host_bink_close"
+    },
+    {
+      "va": "0x70000040",
+      "name": "host_bink_copy"
+    },
+    {
+      "va": "0x70000050",
+      "name": "host_bink_decode"
+    },
+    {
+      "va": "0x70000060",
+      "name": "host_bink_next"
+    },
+    {
+      "va": "0x70000070",
+      "name": "host_bink_open"
+    },
+    {
+      "va": "0x70000080",
+      "name": "host_bink_wait"
+    },
+    {
+      "va": "0x70000090",
+      "name": "host_get_tp"
+    },
+    {
+      "va": "0x700000A0",
+      "name": "host_gl_buffer_write"
+    },
+    {
+      "va": "0x700000B0",
+      "name": "host_gl_fence_frame"
+    },
+    {
+      "va": "0x700000C0",
+      "name": "host_gl_has_extension"
+    },
+    {
+      "va": "0x700000D0",
+      "name": "host_gl_read_buffer_word"
+    },
+    {
+      "va": "0x700000E0",
+      "name": "host_gl_wait_frame"
+    },
+    {
+      "va": "0x700000F0",
+      "name": "host_memory_fingerprint_range"
+    },
+    {
+      "va": "0x70000100",
+      "name": "host_sdl_create_window"
+    },
+    {
+      "va": "0x70000110",
+      "name": "host_sdl_gamepad_axis"
+    },
+    {
+      "va": "0x70000120",
+      "name": "host_sdl_gamepad_button"
+    },
+    {
+      "va": "0x70000130",
+      "name": "host_sdl_gamepad_from_id"
+    },
+    {
+      "va": "0x70000140",
+      "name": "host_sdl_gamepad_type"
+    },
+    {
+      "va": "0x70000150",
+      "name": "host_sdl_get_clipboard_text"
+    },
+    {
+      "va": "0x70000160",
+      "name": "host_sdl_get_error"
+    },
+    {
+      "va": "0x70000170",
+      "name": "host_sdl_get_gamepads"
+    },
+    {
+      "va": "0x70000180",
+      "name": "host_sdl_gl_create_context"
+    },
+    {
+      "va": "0x70000190",
+      "name": "host_sdl_gl_make_current"
+    },
+    {
+      "va": "0x700001A0",
+      "name": "host_sdl_gl_set_attribute"
+    },
+    {
+      "va": "0x700001B0",
+      "name": "host_sdl_gl_set_swap_interval"
+    },
+    {
+      "va": "0x700001C0",
+      "name": "host_sdl_gl_swap_window"
+    },
+    {
+      "va": "0x700001D0",
+      "name": "host_sdl_init"
+    },
+    {
+      "va": "0x700001E0",
+      "name": "host_sdl_open_audio_stream"
+    },
+    {
+      "va": "0x700001F0",
+      "name": "host_sdl_open_gamepad"
+    },
+    {
+      "va": "0x70000200",
+      "name": "host_sdl_poll_event"
+    },
+    {
+      "va": "0x70000210",
+      "name": "host_sdl_put_audio_stream_data"
+    },
+    {
+      "va": "0x70000220",
+      "name": "host_sdl_resume_audio_stream_device"
+    },
+    {
+      "va": "0x70000230",
+      "name": "host_sdl_rumble_gamepad"
+    },
+    {
+      "va": "0x70000240",
+      "name": "host_sdl_set_clipboard_text"
+    },
+    {
+      "va": "0x70000250",
+      "name": "host_sdl_set_hint"
+    },
+    {
+      "va": "0x70000260",
+      "name": "host_sdl_set_relative_mouse"
+    },
+    {
+      "va": "0x70000270",
+      "name": "host_sdl_set_window_fullscreen"
+    },
+    {
+      "va": "0x70000280",
+      "name": "host_sdl_set_window_size"
+    },
+    {
+      "va": "0x70000290",
+      "name": "host_sdl_show_simple_message_box"
+    },
+    {
+      "va": "0x700002A0",
+      "name": "host_sdl_show_toast"
+    },
+    {
+      "va": "0x700002B0",
+      "name": "host_sdl_thread_id"
+    },
+    {
+      "va": "0x700002C0",
+      "name": "host_sdl_ticks"
+    },
+    {
+      "va": "0x700002D0",
+      "name": "host_sdl_warp_mouse"
+    },
+    {
+      "va": "0x700002E0",
+      "name": "host_sdl_window_flags"
+    },
+    {
+      "va": "0x700002F0",
+      "name": "host_sdl_window_size"
+    },
+    {
+      "va": "0x70000300",
+      "name": "host_sdl_window_size_in_pixels"
+    },
+    {
+      "va": "0x70000310",
+      "name": "host_set_tp"
+    },
+    {
+      "va": "0x70000320",
+      "name": "host_syscall"
+    },
+    {
+      "va": "0x70000330",
+      "name": "host_thread_create"
+    },
+    {
+      "va": "0x70000340",
+      "name": "platform_screen_mode"
+    },
+    {
+      "va": "0x70000350",
+      "name": "posix_command_line_argument"
+    },
+    {
+      "va": "0x70000360",
+      "name": "posix_directory_close"
+    },
+    {
+      "va": "0x70000370",
+      "name": "posix_directory_next"
+    },
+    {
+      "va": "0x70000380",
+      "name": "posix_directory_open"
+    },
+    {
+      "va": "0x70000390",
+      "name": "posix_discord_close"
+    },
+    {
+      "va": "0x700003A0",
+      "name": "posix_discord_connect"
+    },
+    {
+      "va": "0x700003B0",
+      "name": "posix_discord_read"
+    },
+    {
+      "va": "0x700003C0",
+      "name": "posix_discord_write"
+    },
+    {
+      "va": "0x700003D0",
+      "name": "posix_disk_space"
+    },
+    {
+      "va": "0x700003E0",
+      "name": "posix_find_entry_case_insensitive"
+    },
+    {
+      "va": "0x700003F0",
+      "name": "posix_fstat"
+    },
+    {
+      "va": "0x70000400",
+      "name": "posix_local_ipv4_address"
+    },
+    {
+      "va": "0x70000410",
+      "name": "posix_make_directory"
+    },
+    {
+      "va": "0x70000420",
+      "name": "posix_process_id"
+    },
+    {
+      "va": "0x70000430",
+      "name": "posix_random_bytes"
+    },
+    {
+      "va": "0x70000440",
+      "name": "posix_register_url_scheme"
+    },
+    {
+      "va": "0x70000450",
+      "name": "posix_resolve_ipv4"
+    },
+    {
+      "va": "0x70000460",
+      "name": "posix_seek"
+    },
+    {
+      "va": "0x70000470",
+      "name": "posix_set_file_times"
+    },
+    {
+      "va": "0x70000480",
+      "name": "posix_set_read_only"
+    },
+    {
+      "va": "0x70000490",
+      "name": "posix_socket"
+    },
+    {
+      "va": "0x700004A0",
+      "name": "posix_socket_accept"
+    },
+    {
+      "va": "0x700004B0",
+      "name": "posix_socket_bind"
+    },
+    {
+      "va": "0x700004C0",
+      "name": "posix_socket_bytes_available"
+    },
+    {
+      "va": "0x700004D0",
+      "name": "posix_socket_close"
+    },
+    {
+      "va": "0x700004E0",
+      "name": "posix_socket_connect"
+    },
+    {
+      "va": "0x700004F0",
+      "name": "posix_socket_getpeername"
+    },
+    {
+      "va": "0x70000500",
+      "name": "posix_socket_getsockname"
+    },
+    {
+      "va": "0x70000510",
+      "name": "posix_socket_getsockopt"
+    },
+    {
+      "va": "0x70000520",
+      "name": "posix_socket_last_error"
+    },
+    {
+      "va": "0x70000530",
+      "name": "posix_socket_listen"
+    },
+    {
+      "va": "0x70000540",
+      "name": "posix_socket_recv"
+    },
+    {
+      "va": "0x70000550",
+      "name": "posix_socket_recvfrom"
+    },
+    {
+      "va": "0x70000560",
+      "name": "posix_socket_select"
+    },
+    {
+      "va": "0x70000570",
+      "name": "posix_socket_send"
+    },
+    {
+      "va": "0x70000580",
+      "name": "posix_socket_sendto"
+    },
+    {
+      "va": "0x70000590",
+      "name": "posix_socket_set_nodelay"
+    },
+    {
+      "va": "0x700005A0",
+      "name": "posix_socket_set_nonblocking"
+    },
+    {
+      "va": "0x700005B0",
+      "name": "posix_socket_setsockopt"
+    },
+    {
+      "va": "0x700005C0",
+      "name": "posix_socket_shutdown"
+    },
+    {
+      "va": "0x700005D0",
+      "name": "posix_spawn"
+    },
+    {
+      "va": "0x700005E0",
+      "name": "posix_spawn_file_actions_addclose"
+    },
+    {
+      "va": "0x700005F0",
+      "name": "posix_spawn_file_actions_adddup2"
+    },
+    {
+      "va": "0x70000600",
+      "name": "posix_spawn_file_actions_destroy"
+    },
+    {
+      "va": "0x70000610",
+      "name": "posix_spawn_file_actions_init"
+    },
+    {
+      "va": "0x70000620",
+      "name": "posix_stat"
+    },
+    {
+      "va": "0x70000630",
+      "name": "posix_truncate"
+    },
+    {
+      "va": "0x70000640",
+      "name": "posix_upnp_forward_udp"
+    },
+    {
+      "va": "0x70000650",
+      "name": "posix_upnp_stop_forwarding_udp"
+    }
+  ],
+  "image_symbols": {
+    "symbols": {
+      "entry": 3743808,
+      "__guest_start": 3743808,
+      "__guest_thread_start": 3744496,
+      "__guest_thread_attach": 3745056,
+      "__errno_location": 4049664
+    },
+    "init_array": {
+      "va": 5622040,
+      "bytes": 4,
+      "entries": [
+        3928944
+      ]
+    },
+    "fini_array": {
+      "va": 5622044,
+      "bytes": 0,
+      "entries": []
+    }
+  },
+  "shards": 47,
+  "chunk_size": 256,
+  "elapsed_seconds": 24.501,
+  "translator_provenance": {
+    "root": "/Users/ivanmcnish/Library/Caches/halo-ce-apple-silicon/20260929-193526-22123/build/xboxrecomp",
+    "git": {
+      "head": "051a128df5ec27ef14f1ceaaead11c5457321eef",
+      "status": [
+        " M templates/runtime/recomp_types.h",
+        " M tools/recomp/lifter.py",
+        " M tools/recomp/translator.py"
+      ]
+    },
+    "overlay_manifest": null,
+    "effective_sha256": {
+      "tools/recomp/translator.py": "4bcaf35d4a01d2637eecc92ed136b5497b1ccd1ff05f3a3855fc419b379ef6d3",
+      "tools/recomp/lifter.py": "768208e04d444089ee358486fb4ec321bc2b1f678dc8b7cb90dac1b7aaecd9ba",
+      "tools/recomp/disasm.py": "519845f883e5a9d89da78bcc83ea8908e589e4125d62c67fdfc55a32a99339ca",
+      "tools/recomp/config.py": "2179ca258790a7da56ed486ca078251eb97cdb0b85390a6881edd5f5695e4fe9",
+      "templates/runtime/recomp_types.h": "b72f3d3ab0b9d823eb5dc1e8757bc60f3c9945fd02362e66aea065b98bbd2ea1"
+    },
+    "loaded_modules": {
+      "tools.recomp.config": "/Users/ivanmcnish/Library/Caches/halo-ce-apple-silicon/20260929-193526-22123/build/xboxrecomp/tools/recomp/config.py",
+      "tools.recomp.translator": "/Users/ivanmcnish/Library/Caches/halo-ce-apple-silicon/20260929-193526-22123/build/xboxrecomp/tools/recomp/translator.py",
+      "tools.recomp.lifter": "/Users/ivanmcnish/Library/Caches/halo-ce-apple-silicon/20260929-193526-22123/build/xboxrecomp/tools/recomp/lifter.py",
+      "tools.recomp.disasm": "/Users/ivanmcnish/Library/Caches/halo-ce-apple-silicon/20260929-193526-22123/build/xboxrecomp/tools/recomp/disasm.py"
+    }
+  }
+}

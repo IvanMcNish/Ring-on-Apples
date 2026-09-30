@@ -1,0 +1,620 @@
+{
+  "format": 1,
+  "token_base": 4262461440,
+  "token_stride": 16,
+  "source_gl_header_sha256": "24756cf80c9b2e64be22d618c3f4982554306b061d4c9c9fe49c1c2ed7d169d9",
+  "entries": [
+    {
+      "name": "glGetString",
+      "token": 4262461440,
+      "return_type": "const GLubyte *",
+      "arguments": "GLenum name"
+    },
+    {
+      "name": "glGetIntegerv",
+      "token": 4262461456,
+      "return_type": "void",
+      "arguments": "GLenum pname, GLint *params"
+    },
+    {
+      "name": "glGetTexImage",
+      "token": 4262461472,
+      "return_type": "void",
+      "arguments": "GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels"
+    },
+    {
+      "name": "glGenerateMipmap",
+      "token": 4262461488,
+      "return_type": "void",
+      "arguments": "GLenum target"
+    },
+    {
+      "name": "glGetError",
+      "token": 4262461504,
+      "return_type": "GLenum",
+      "arguments": "void"
+    },
+    {
+      "name": "glIsEnabled",
+      "token": 4262461520,
+      "return_type": "GLboolean",
+      "arguments": "GLenum cap"
+    },
+    {
+      "name": "glEnable",
+      "token": 4262461536,
+      "return_type": "void",
+      "arguments": "GLenum cap"
+    },
+    {
+      "name": "glDisable",
+      "token": 4262461552,
+      "return_type": "void",
+      "arguments": "GLenum cap"
+    },
+    {
+      "name": "glViewport",
+      "token": 4262461568,
+      "return_type": "void",
+      "arguments": "GLint x, GLint y, GLsizei width, GLsizei height"
+    },
+    {
+      "name": "glDepthRange",
+      "token": 4262461584,
+      "return_type": "void",
+      "arguments": "GLclampd near_val, GLclampd far_val"
+    },
+    {
+      "name": "glScissor",
+      "token": 4262461600,
+      "return_type": "void",
+      "arguments": "GLint x, GLint y, GLsizei width, GLsizei height"
+    },
+    {
+      "name": "glClearColor",
+      "token": 4262461616,
+      "return_type": "void",
+      "arguments": "GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha"
+    },
+    {
+      "name": "glClearDepth",
+      "token": 4262461632,
+      "return_type": "void",
+      "arguments": "GLclampd depth"
+    },
+    {
+      "name": "glClearStencil",
+      "token": 4262461648,
+      "return_type": "void",
+      "arguments": "GLint s"
+    },
+    {
+      "name": "glClear",
+      "token": 4262461664,
+      "return_type": "void",
+      "arguments": "GLbitfield mask"
+    },
+    {
+      "name": "glColorMask",
+      "token": 4262461680,
+      "return_type": "void",
+      "arguments": "GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha"
+    },
+    {
+      "name": "glDepthMask",
+      "token": 4262461696,
+      "return_type": "void",
+      "arguments": "GLboolean flag"
+    },
+    {
+      "name": "glDepthFunc",
+      "token": 4262461712,
+      "return_type": "void",
+      "arguments": "GLenum func"
+    },
+    {
+      "name": "glStencilFunc",
+      "token": 4262461728,
+      "return_type": "void",
+      "arguments": "GLenum func, GLint ref, GLuint mask"
+    },
+    {
+      "name": "glStencilOp",
+      "token": 4262461744,
+      "return_type": "void",
+      "arguments": "GLenum fail, GLenum zfail, GLenum zpass"
+    },
+    {
+      "name": "glStencilMask",
+      "token": 4262461760,
+      "return_type": "void",
+      "arguments": "GLuint mask"
+    },
+    {
+      "name": "glBlendFunc",
+      "token": 4262461776,
+      "return_type": "void",
+      "arguments": "GLenum sfactor, GLenum dfactor"
+    },
+    {
+      "name": "glBlendEquation",
+      "token": 4262461792,
+      "return_type": "void",
+      "arguments": "GLenum mode"
+    },
+    {
+      "name": "glBlendColor",
+      "token": 4262461808,
+      "return_type": "void",
+      "arguments": "GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha"
+    },
+    {
+      "name": "glCullFace",
+      "token": 4262461824,
+      "return_type": "void",
+      "arguments": "GLenum mode"
+    },
+    {
+      "name": "glFrontFace",
+      "token": 4262461840,
+      "return_type": "void",
+      "arguments": "GLenum mode"
+    },
+    {
+      "name": "glPolygonMode",
+      "token": 4262461856,
+      "return_type": "void",
+      "arguments": "GLenum face, GLenum mode"
+    },
+    {
+      "name": "glPolygonOffset",
+      "token": 4262461872,
+      "return_type": "void",
+      "arguments": "GLfloat factor, GLfloat units"
+    },
+    {
+      "name": "glLineWidth",
+      "token": 4262461888,
+      "return_type": "void",
+      "arguments": "GLfloat width"
+    },
+    {
+      "name": "glPixelStorei",
+      "token": 4262461904,
+      "return_type": "void",
+      "arguments": "GLenum pname, GLint param"
+    },
+    {
+      "name": "glReadPixels",
+      "token": 4262461920,
+      "return_type": "void",
+      "arguments": "GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLvoid *pixels"
+    },
+    {
+      "name": "glFinish",
+      "token": 4262461936,
+      "return_type": "void",
+      "arguments": "void"
+    },
+    {
+      "name": "glFlush",
+      "token": 4262461952,
+      "return_type": "void",
+      "arguments": "void"
+    },
+    {
+      "name": "glGenTextures",
+      "token": 4262461968,
+      "return_type": "void",
+      "arguments": "GLsizei n, GLuint *textures"
+    },
+    {
+      "name": "glDeleteTextures",
+      "token": 4262461984,
+      "return_type": "void",
+      "arguments": "GLsizei n, const GLuint *textures"
+    },
+    {
+      "name": "glBindTexture",
+      "token": 4262462000,
+      "return_type": "void",
+      "arguments": "GLenum target, GLuint texture"
+    },
+    {
+      "name": "glActiveTexture",
+      "token": 4262462016,
+      "return_type": "void",
+      "arguments": "GLenum texture"
+    },
+    {
+      "name": "glTexImage2D",
+      "token": 4262462032,
+      "return_type": "void",
+      "arguments": "GLenum target, GLint level, GLint internalFormat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels"
+    },
+    {
+      "name": "glTexImage3D",
+      "token": 4262462048,
+      "return_type": "void",
+      "arguments": "GLenum target, GLint level, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels"
+    },
+    {
+      "name": "glTexSubImage2D",
+      "token": 4262462064,
+      "return_type": "void",
+      "arguments": "GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels"
+    },
+    {
+      "name": "glCompressedTexImage2D",
+      "token": 4262462080,
+      "return_type": "void",
+      "arguments": "GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data"
+    },
+    {
+      "name": "glCompressedTexImage3D",
+      "token": 4262462096,
+      "return_type": "void",
+      "arguments": "GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *data"
+    },
+    {
+      "name": "glTexParameteri",
+      "token": 4262462112,
+      "return_type": "void",
+      "arguments": "GLenum target, GLenum pname, GLint param"
+    },
+    {
+      "name": "glTexParameteriv",
+      "token": 4262462128,
+      "return_type": "void",
+      "arguments": "GLenum target, GLenum pname, const GLint *params"
+    },
+    {
+      "name": "glTexParameterf",
+      "token": 4262462144,
+      "return_type": "void",
+      "arguments": "GLenum target, GLenum pname, GLfloat param"
+    },
+    {
+      "name": "glTexParameterfv",
+      "token": 4262462160,
+      "return_type": "void",
+      "arguments": "GLenum target, GLenum pname, const GLfloat *params"
+    },
+    {
+      "name": "glGenSamplers",
+      "token": 4262462176,
+      "return_type": "void",
+      "arguments": "GLsizei count, GLuint *samplers"
+    },
+    {
+      "name": "glBindSampler",
+      "token": 4262462192,
+      "return_type": "void",
+      "arguments": "GLuint unit, GLuint sampler"
+    },
+    {
+      "name": "glSamplerParameteri",
+      "token": 4262462208,
+      "return_type": "void",
+      "arguments": "GLuint sampler, GLenum pname, GLint param"
+    },
+    {
+      "name": "glSamplerParameterf",
+      "token": 4262462224,
+      "return_type": "void",
+      "arguments": "GLuint sampler, GLenum pname, GLfloat param"
+    },
+    {
+      "name": "glSamplerParameterfv",
+      "token": 4262462240,
+      "return_type": "void",
+      "arguments": "GLuint sampler, GLenum pname, const GLfloat *param"
+    },
+    {
+      "name": "glGenFramebuffers",
+      "token": 4262462256,
+      "return_type": "void",
+      "arguments": "GLsizei n, GLuint *framebuffers"
+    },
+    {
+      "name": "glDeleteFramebuffers",
+      "token": 4262462272,
+      "return_type": "void",
+      "arguments": "GLsizei n, const GLuint *framebuffers"
+    },
+    {
+      "name": "glBindFramebuffer",
+      "token": 4262462288,
+      "return_type": "void",
+      "arguments": "GLenum target, GLuint framebuffer"
+    },
+    {
+      "name": "glFramebufferTexture2D",
+      "token": 4262462304,
+      "return_type": "void",
+      "arguments": "GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level"
+    },
+    {
+      "name": "glCheckFramebufferStatus",
+      "token": 4262462320,
+      "return_type": "GLenum",
+      "arguments": "GLenum target"
+    },
+    {
+      "name": "glBlitFramebuffer",
+      "token": 4262462336,
+      "return_type": "void",
+      "arguments": "GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter"
+    },
+    {
+      "name": "glDrawBuffers",
+      "token": 4262462352,
+      "return_type": "void",
+      "arguments": "GLsizei n, const GLenum *bufs"
+    },
+    {
+      "name": "glReadBuffer",
+      "token": 4262462368,
+      "return_type": "void",
+      "arguments": "GLenum mode"
+    },
+    {
+      "name": "glGenBuffers",
+      "token": 4262462384,
+      "return_type": "void",
+      "arguments": "GLsizei n, GLuint *buffers"
+    },
+    {
+      "name": "glDeleteBuffers",
+      "token": 4262462400,
+      "return_type": "void",
+      "arguments": "GLsizei n, const GLuint *buffers"
+    },
+    {
+      "name": "glBindBuffer",
+      "token": 4262462416,
+      "return_type": "void",
+      "arguments": "GLenum target, GLuint buffer"
+    },
+    {
+      "name": "glBufferData",
+      "token": 4262462432,
+      "return_type": "void",
+      "arguments": "GLenum target, GLsizeiptr size, const void *data, GLenum usage"
+    },
+    {
+      "name": "glBufferSubData",
+      "token": 4262462448,
+      "return_type": "void",
+      "arguments": "GLenum target, GLintptr offset, GLsizeiptr size, const void *data"
+    },
+    {
+      "name": "glBindBufferRange",
+      "token": 4262462464,
+      "return_type": "void",
+      "arguments": "GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size"
+    },
+    {
+      "name": "glMapBufferRange",
+      "token": 4262462480,
+      "return_type": "void *",
+      "arguments": "GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access"
+    },
+    {
+      "name": "glBindBufferBase",
+      "token": 4262462496,
+      "return_type": "void",
+      "arguments": "GLenum target, GLuint index, GLuint buffer"
+    },
+    {
+      "name": "glGenVertexArrays",
+      "token": 4262462512,
+      "return_type": "void",
+      "arguments": "GLsizei n, GLuint *arrays"
+    },
+    {
+      "name": "glBindVertexArray",
+      "token": 4262462528,
+      "return_type": "void",
+      "arguments": "GLuint array"
+    },
+    {
+      "name": "glEnableVertexAttribArray",
+      "token": 4262462544,
+      "return_type": "void",
+      "arguments": "GLuint index"
+    },
+    {
+      "name": "glDisableVertexAttribArray",
+      "token": 4262462560,
+      "return_type": "void",
+      "arguments": "GLuint index"
+    },
+    {
+      "name": "glVertexAttribPointer",
+      "token": 4262462576,
+      "return_type": "void",
+      "arguments": "GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const void *pointer"
+    },
+    {
+      "name": "glVertexAttribIPointer",
+      "token": 4262462592,
+      "return_type": "void",
+      "arguments": "GLuint index, GLint size, GLenum type, GLsizei stride, const void *pointer"
+    },
+    {
+      "name": "glVertexAttrib4fv",
+      "token": 4262462608,
+      "return_type": "void",
+      "arguments": "GLuint index, const GLfloat *v"
+    },
+    {
+      "name": "glVertexAttribI4ui",
+      "token": 4262462624,
+      "return_type": "void",
+      "arguments": "GLuint index, GLuint x, GLuint y, GLuint z, GLuint w"
+    },
+    {
+      "name": "glDrawArrays",
+      "token": 4262462640,
+      "return_type": "void",
+      "arguments": "GLenum mode, GLint first, GLsizei count"
+    },
+    {
+      "name": "glDrawElements",
+      "token": 4262462656,
+      "return_type": "void",
+      "arguments": "GLenum mode, GLsizei count, GLenum type, const GLvoid *indices"
+    },
+    {
+      "name": "glDrawElementsBaseVertex",
+      "token": 4262462672,
+      "return_type": "void",
+      "arguments": "GLenum mode, GLsizei count, GLenum type, const void *indices, GLint basevertex"
+    },
+    {
+      "name": "glCreateShader",
+      "token": 4262462688,
+      "return_type": "GLuint",
+      "arguments": "GLenum type"
+    },
+    {
+      "name": "glShaderSource",
+      "token": 4262462704,
+      "return_type": "void",
+      "arguments": "GLuint shader, GLsizei count, const GLchar *const*string, const GLint *length"
+    },
+    {
+      "name": "glCompileShader",
+      "token": 4262462720,
+      "return_type": "void",
+      "arguments": "GLuint shader"
+    },
+    {
+      "name": "glGetShaderiv",
+      "token": 4262462736,
+      "return_type": "void",
+      "arguments": "GLuint shader, GLenum pname, GLint *params"
+    },
+    {
+      "name": "glGetShaderInfoLog",
+      "token": 4262462752,
+      "return_type": "void",
+      "arguments": "GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *infoLog"
+    },
+    {
+      "name": "glDeleteShader",
+      "token": 4262462768,
+      "return_type": "void",
+      "arguments": "GLuint shader"
+    },
+    {
+      "name": "glCreateProgram",
+      "token": 4262462784,
+      "return_type": "GLuint",
+      "arguments": "void"
+    },
+    {
+      "name": "glAttachShader",
+      "token": 4262462800,
+      "return_type": "void",
+      "arguments": "GLuint program, GLuint shader"
+    },
+    {
+      "name": "glBindAttribLocation",
+      "token": 4262462816,
+      "return_type": "void",
+      "arguments": "GLuint program, GLuint index, const GLchar *name"
+    },
+    {
+      "name": "glBindFragDataLocation",
+      "token": 4262462832,
+      "return_type": "void",
+      "arguments": "GLuint program, GLuint color, const GLchar *name"
+    },
+    {
+      "name": "glLinkProgram",
+      "token": 4262462848,
+      "return_type": "void",
+      "arguments": "GLuint program"
+    },
+    {
+      "name": "glGetProgramiv",
+      "token": 4262462864,
+      "return_type": "void",
+      "arguments": "GLuint program, GLenum pname, GLint *params"
+    },
+    {
+      "name": "glGetProgramInfoLog",
+      "token": 4262462880,
+      "return_type": "void",
+      "arguments": "GLuint program, GLsizei bufSize, GLsizei *length, GLchar *infoLog"
+    },
+    {
+      "name": "glUseProgram",
+      "token": 4262462896,
+      "return_type": "void",
+      "arguments": "GLuint program"
+    },
+    {
+      "name": "glGetUniformLocation",
+      "token": 4262462912,
+      "return_type": "GLint",
+      "arguments": "GLuint program, const GLchar *name"
+    },
+    {
+      "name": "glUniform1i",
+      "token": 4262462928,
+      "return_type": "void",
+      "arguments": "GLint location, GLint v0"
+    },
+    {
+      "name": "glUniform1iv",
+      "token": 4262462944,
+      "return_type": "void",
+      "arguments": "GLint location, GLsizei count, const GLint *value"
+    },
+    {
+      "name": "glUniform1f",
+      "token": 4262462960,
+      "return_type": "void",
+      "arguments": "GLint location, GLfloat v0"
+    },
+    {
+      "name": "glUniform4fv",
+      "token": 4262462976,
+      "return_type": "void",
+      "arguments": "GLint location, GLsizei count, const GLfloat *value"
+    },
+    {
+      "name": "glUniform2f",
+      "token": 4262462992,
+      "return_type": "void",
+      "arguments": "GLint location, GLfloat v0, GLfloat v1"
+    },
+    {
+      "name": "glGenQueries",
+      "token": 4262463008,
+      "return_type": "void",
+      "arguments": "GLsizei n, GLuint *ids"
+    },
+    {
+      "name": "glBeginQuery",
+      "token": 4262463024,
+      "return_type": "void",
+      "arguments": "GLenum target, GLuint id"
+    },
+    {
+      "name": "glEndQuery",
+      "token": 4262463040,
+      "return_type": "void",
+      "arguments": "GLenum target"
+    },
+    {
+      "name": "glGetQueryObjectuiv",
+      "token": 4262463056,
+      "return_type": "void",
+      "arguments": "GLuint id, GLenum pname, GLuint *params"
+    }
+  ]
+}

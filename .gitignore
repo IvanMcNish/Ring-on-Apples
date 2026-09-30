@@ -1,0 +1,29 @@
+# Build outputs and intermediate binaries
+build-*/
+dist/
+*.o
+*.a
+*.dylib
+*.app
+*.ipa
+*.dSYM/
+
+# Game Assets (Copyrighted data - place your own maps in Assets/GameData)
+Assets/GameData/*
+!Assets/GameData/README.md
+
+# macOS & Xcode metadata
+.DS_Store
+*.xcuserstate
+xcuserdata/
+DerivedData/
+*.xcresult/
+
+# Python caches
+__pycache__/
+*.pyc
+
+# Local Environment and Private Profiles
+*.mobileprovision
+*.xcent
+.env
