@@ -557,6 +557,40 @@ static BOOL SwizzledOpenURL(id self, SEL _cmd, UIApplication *app, NSURL *url, N
                 if (pressed) checkCombo();
             };
         }
+
+        if (@available(iOS 14.0, tvOS 14.0, *)) {
+            if ([gp respondsToSelector:@selector(buttonHome)] && gp.buttonHome) {
+                gp.buttonHome.pressedChangedHandler = ^(GCControllerButtonInput *btn, float val, BOOL pressed) {
+                    if (pressed) {
+                        NSLog(@"[HaloGamepad] Guide/Home button pressed -> Triggering Game Center Overlay");
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            Class gkClass = NSClassFromString(@"GKAccessPoint");
+                            if (gkClass) {
+                                SEL selShared = NSSelectorFromString(@"shared");
+                                if ([gkClass respondsToSelector:selShared]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                                    id pt = [gkClass performSelector:selShared];
+                                    SEL selDash = NSSelectorFromString(@"triggerAccessPointWithHandler:");
+                                    if (pt && [pt respondsToSelector:selDash]) {
+                                        void (^handler)(void) = ^{
+                                            NSLog(@"[HaloGamepad] Game Center overlay closed");
+                                        };
+                                        NSMethodSignature *sig = [pt methodSignatureForSelector:selDash];
+                                        NSInvocation *inv = [NSInvocation invocationWithMethodSignature:sig];
+                                        [inv setSelector:selDash];
+                                        [inv setTarget:pt];
+                                        [inv setArgument:&handler atIndex:2];
+                                        [inv invoke];
+                                    }
+#pragma clang diagnostic pop
+                                }
+                            }
+                        });
+                    }
+                };
+            }
+        }
     }
 }
 
