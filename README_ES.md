@@ -1,5 +1,11 @@
 # Halo: Combat Evolved — Ports Nativos para Plataformas Apple (macOS, iOS, iPadOS, tvOS)
 
+---
+
+### 🌐 Idioma / Language: [🇪🇸 Español (Actual)](README_ES.md) | [🇺🇸 Click here to read in English (README.md)](README.md)
+
+---
+
 [![Plataformas](https://img.shields.io/badge/Plataformas-macOS%20%7C%20iOS%20%7C%20iPadOS%20%7C%20tvOS-blue.svg)](#características-principales)
 [![Arquitectura](https://img.shields.io/badge/Arquitectura-ARM64%20(Apple%20Silicon)-brightgreen.svg)](#características-principales)
 [![Lenguaje](https://img.shields.io/badge/Lenguajes-C%20%2F%20Objective--C%20%2F%20Metal-orange.svg)](#descripción-del-proyecto)
@@ -10,9 +16,6 @@ Port nativo y de alto rendimiento de **Halo: Combat Evolved** diseñado específ
 > **AVISO LEGAL Y REGLA DE SALA LIMPIA (CLEAN-ROOM DISCLAIMER)**:
 > Este repositorio **SOLO contiene código fuente abierto del motor recompilado, capas de traducción nativas y lanzadores para Apple Silicon**. **NO CONTIENE** ningún archivo con copyright comercial, música, sonidos, texturas, mapas de juego (`.map`) ni imágenes de disco ISO.
 > El usuario debe poseer legalmente una copia original de Halo: Combat Evolved (PC o Mac) y proveer sus propios archivos de juego para generar las versiones ejecutables.
-
-> [!NOTE]
-> Para la versión en inglés de esta guía, consulta: [README.md](README.md).
 
 ---
 
@@ -133,30 +136,41 @@ Los resultados se guardan en la carpeta `dist/`:
 
 ---
 
-## 📲 Instalación Directa y Renovación de 7 Días (Apple ID Gratuito)
+## 📲 Instalación de los Paquetes `.ipa` (Sideloadly, AltStore, Xcode)
 
-Si tienes tu dispositivo conectado por cable o Wi-Fi con el **Modo Desarrollador activado** (`Ajustes -> Privacidad y seguridad -> Modo de desarrollador`):
+Una vez completada la compilación, los paquetes listos se encuentran en la carpeta `dist/`:
+* `dist/Halo Combat Evolved - iOS.ipa`
+* `dist/Halo Combat Evolved - tvOS.ipa`
+* `dist/Halo Combat Evolved - iOS.app`
+* `dist/Halo Combat Evolved - tvOS.app`
 
-### Instalación Directa en un Solo Comando:
+### Métodos de Instalación:
+
+#### 1. Sideloadly (macOS y Windows — Recomendado)
+1. Descarga y abre [Sideloadly](https://sideloadly.io/).
+2. Conecta tu iPhone, iPad o Apple TV por cable USB o Wi-Fi.
+3. Arrastra el archivo `.ipa` desde `dist/` a la ventana de Sideloadly.
+4. Ingresa tu Apple ID y presiona **Start** para firmar e instalar automáticamente.
+
+#### 2. AltStore / SideStore
+1. Envía el archivo `.ipa` a tu dispositivo (vía AirDrop, iCloud Drive o la app Archivos).
+2. Abre **AltStore** o **SideStore** en tu iPhone/iPad.
+3. En la pestaña **My Apps**, toca el botón `+` y selecciona `Halo Combat Evolved - iOS.ipa`.
+
+#### 3. Xcode / Apple Configurator
+1. En Xcode, ve al menú superior: `Window` -> `Devices and Simulators`.
+2. Selecciona tu dispositivo conectado y arrastra el paquete `.app` o `.ipa` sobre la lista de **Installed Apps**.
+3. Para Apple TV, puedes enlazarlo de forma inalámbrica en Xcode e instalar directamente.
+
+#### 4. Instalación Directa por CLI o App Gráfica (Mac Local)
+Si tienes tu dispositivo conectado al Mac con el **Modo Desarrollador activado** (`Ajustes -> Privacidad y seguridad -> Modo de desarrollador`):
 ```bash
-# Instalar en tu iPhone o iPad conectado:
+# Instalación directa en iPhone o iPad:
 python3 build.py --install-ios
 
-# Instalar en tu Apple TV conectado:
+# Instalación directa en Apple TV:
 python3 build.py --install-tvos
 ```
-
-### Renovación de Firma Cada 7 Días (Cuentas Gratuitas de Apple):
-Con cuentas gratuitas de Apple Developer, los certificados caducan a los 7 días. Puedes renovar y reinstalar todas las apps en tus dispositivos automáticamente con un solo comando:
-```bash
-python3 build.py --renew-7days
-```
-
-### Instalación mediante Sideloaders de Terceros:
-También puedes tomar el archivo `.ipa` generado en `dist/` e instalarlo usando:
-* **Sideloadly** (macOS / Windows)
-* **AltStore**
-* **TrollStore** (en versiones compatibles de iOS)
 
 ---
 

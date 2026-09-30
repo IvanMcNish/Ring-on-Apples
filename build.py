@@ -14,7 +14,7 @@ Usage:
   python3 build.py --clean          # Clean all intermediate build artifacts (keeps repo small)
   python3 build.py --install-ios    # Install to connected iPhone/iPad via devicectl
   python3 build.py --install-tvos   # Install to connected Apple TV via devicectl
-  python3 build.py --renew-7days    # Re-package and re-install to connected devices for 7-day renewal
+  python3 build.py --reinstall-all  # Re-package and deploy to all connected devices
 """
 
 import os
@@ -129,7 +129,7 @@ def main():
     parser.add_argument("--skip-ipa", action="store_true", help="Skip creating .ipa zip archive to save disk space and time")
     parser.add_argument("--install-ios", action="store_true", help="Install iOS app directly to connected iPhone or iPad")
     parser.add_argument("--install-tvos", action="store_true", help="Install tvOS app directly to connected Apple TV")
-    parser.add_argument("--renew-7days", action="store_true", help="Re-package and deploy to all connected devices for free 7-day sideload renewal")
+    parser.add_argument("--reinstall-all", "--renew-7days", dest="reinstall_all", action="store_true", help="Re-package and deploy to all connected devices")
 
     args = parser.parse_args()
 
@@ -141,15 +141,15 @@ def main():
         clean_artifacts()
         return
 
-    if args.renew_7days:
-        print("=== Renewing 7-Day Sideloaded Apps ===")
+    if args.reinstall_all:
+        print("=== Deploying to All Connected Devices ===")
         build_ios(skip_ipa=True)
         install_device("ios")
         # Check if tvOS app is also installed/wanted
         if any("Apple TV" in line for line in list_connected_devices().splitlines()):
             build_tvos(skip_ipa=True)
             install_device("tvos")
-        print("\n7-day sideload renewal complete!")
+        print("\nDeployment to connected devices complete!")
         return
 
     if args.install_ios:
