@@ -463,9 +463,8 @@ static BOOL SwizzledOpenURL(id self, SEL _cmd, UIApplication *app, NSURL *url, N
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
             id point = [gkClass performSelector:selShared];
             if (point) {
-                [point setValue:@YES forKey:@"showHighlights"];
-                [point setValue:@YES forKey:@"active"];
-                NSLog(@"[HaloGameKit] Successfully activated GKAccessPoint overlay and background monitoring");
+                [point setValue:@NO forKey:@"showHighlights"];
+                [point setValue:@NO forKey:@"active"];
             }
 #pragma clang diagnostic pop
         }
@@ -562,30 +561,9 @@ static BOOL SwizzledOpenURL(id self, SEL _cmd, UIApplication *app, NSURL *url, N
             if ([gp respondsToSelector:@selector(buttonHome)] && gp.buttonHome) {
                 gp.buttonHome.pressedChangedHandler = ^(GCControllerButtonInput *btn, float val, BOOL pressed) {
                     if (pressed) {
-                        NSLog(@"[HaloGamepad] Guide/Home button pressed -> Triggering Game Center Overlay");
+                        NSLog(@"[HaloGamepad] Guide/Home button pressed -> Opening in-game settings");
                         dispatch_async(dispatch_get_main_queue(), ^{
-                            Class gkClass = NSClassFromString(@"GKAccessPoint");
-                            if (gkClass) {
-                                SEL selShared = NSSelectorFromString(@"shared");
-                                if ([gkClass respondsToSelector:selShared]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-                                    id pt = [gkClass performSelector:selShared];
-                                    SEL selDash = NSSelectorFromString(@"triggerAccessPointWithHandler:");
-                                    if (pt && [pt respondsToSelector:selDash]) {
-                                        void (^handler)(void) = ^{
-                                            NSLog(@"[HaloGamepad] Game Center overlay closed");
-                                        };
-                                        NSMethodSignature *sig = [pt methodSignatureForSelector:selDash];
-                                        NSInvocation *inv = [NSInvocation invocationWithMethodSignature:sig];
-                                        [inv setSelector:selDash];
-                                        [inv setTarget:pt];
-                                        [inv setArgument:&handler atIndex:2];
-                                        [inv invoke];
-                                    }
-#pragma clang diagnostic pop
-                                }
-                            }
+                            [HaloSettingsOverlay openSettings];
                         });
                     }
                 };
