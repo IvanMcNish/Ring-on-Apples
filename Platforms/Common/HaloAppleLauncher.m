@@ -455,6 +455,23 @@ static BOOL SwizzledOpenURL(id self, SEL _cmd, UIApplication *app, NSURL *url, N
         }
     }
 
+#if TARGET_OS_IPHONE && !TARGET_OS_TV
+    Class gkClass = NSClassFromString(@"GKAccessPoint");
+    if (gkClass) {
+        SEL selShared = NSSelectorFromString(@"shared");
+        if ([gkClass respondsToSelector:selShared]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            id point = [gkClass performSelector:selShared];
+            if (point) {
+                [point setValue:@YES forKey:@"showHighlights"];
+                [point setValue:@YES forKey:@"active"];
+                NSLog(@"[HaloGameKit] Successfully activated GKAccessPoint overlay on iOS");
+            }
+#pragma clang diagnostic pop
+        }
+    }
+#elif TARGET_OS_TV
     Class gkClass = NSClassFromString(@"GKAccessPoint");
     if (gkClass) {
         SEL selShared = NSSelectorFromString(@"shared");
@@ -469,6 +486,7 @@ static BOOL SwizzledOpenURL(id self, SEL _cmd, UIApplication *app, NSURL *url, N
 #pragma clang diagnostic pop
         }
     }
+#endif
 #endif
 
     // Gamepads: Combination triggers (L3+R3 or L1+R1+Menu/Options)
@@ -561,10 +579,38 @@ static BOOL SwizzledOpenURL(id self, SEL _cmd, UIApplication *app, NSURL *url, N
             if ([gp respondsToSelector:@selector(buttonHome)] && gp.buttonHome) {
                 gp.buttonHome.pressedChangedHandler = ^(GCControllerButtonInput *btn, float val, BOOL pressed) {
                     if (pressed) {
+#if TARGET_OS_IPHONE && !TARGET_OS_TV
+                        NSLog(@"[HaloGamepad] Guide/Home button pressed -> Triggering Game Center Overlay");
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            Class gkClass = NSClassFromString(@"GKAccessPoint");
+                            if (gkClass) {
+                                SEL selShared = NSSelectorFromString(@"shared");
+                                if ([gkClass respondsToSelector:selShared]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                                    id pt = [gkClass performSelector:selShared];
+                                    SEL selDash = NSSelectorFromString(@"triggerAccessPointWithHandler:");
+                                    if (pt && [pt respondsToSelector:selDash]) {
+                                        void (^handler)(void) = ^{
+                                            NSLog(@"[HaloGamepad] Game Center overlay closed");
+                                        };
+                                        NSMethodSignature *sig = [pt methodSignatureForSelector:selDash];
+                                        NSInvocation *inv = [NSInvocation invocationWithMethodSignature:sig];
+                                        [inv setSelector:selDash];
+                                        [inv setTarget:pt];
+                                        [inv setArgument:&handler atIndex:2];
+                                        [inv invoke];
+                                    }
+#pragma clang diagnostic pop
+                                }
+                            }
+                        });
+#else
                         NSLog(@"[HaloGamepad] Guide/Home button pressed -> Opening in-game settings");
                         dispatch_async(dispatch_get_main_queue(), ^{
                             [HaloSettingsOverlay openSettings];
                         });
+#endif
                     }
                 };
             }
